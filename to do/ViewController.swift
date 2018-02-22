@@ -8,10 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    
+    //ストーリーボードで扱うTableViewを宣言
+    @IBOutlet var table: UITableView!
+    
+    var memoArray: [String] = ["メモ"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //テーブルビューのデータソースメソッドはViewControllerクラスに書くよ、という設定
+        table.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -19,7 +27,19 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    //セルの数を設定
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return memoArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        
+        cell?.textLabel?.text  = "テスト"
+        return cell!
+    }
+    
 
 }
 
