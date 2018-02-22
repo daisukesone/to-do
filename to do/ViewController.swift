@@ -14,7 +14,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //ストーリーボードで扱うTableViewを宣言
     @IBOutlet var table: UITableView!
     
-    var memoArray: [String] = ["メモ"]
+    var memoArray: [String] = ["メモ1", "メモ2"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //セルの数を設定
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memoArray.count
+        //return memoArray.count
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
