@@ -14,14 +14,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //ストーリーボードで扱うTableViewを宣言
     @IBOutlet var table: UITableView!
     
-    var memoArray = [Any]()
+    //メモリストの配列を生成
+    var memoArray : [String] = []
+    
+    var saveData = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
         //テーブルビューのデータソースメソッドはViewControllerクラスに書くよ、という設定
         table.dataSource = self
+        
+        
+        var memoArray = self.memoArray.append(saveData.object(forKey: "Memo") as! String) as! String
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -30,7 +40,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //セルの数を設定
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return memoArray.count
+       //return memoArray.count
         return memoArray.count
     }
     
